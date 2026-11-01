@@ -11,6 +11,7 @@ export const PERSONAL_INFO = {
   github: 'https://github.com/nadeem-elsayed',
   linkedin: 'https://linkedin.com/in/nadeem-elsayed-b63828290',
   resumeUrl: '/resume.pdf',
+  profileImage: '/Profile_Picture.png',
   availability: {
     badge: 'Available Winter 2025/2026',
     termLength: 'Seeking 4, 8, 12, or 16-Month Co-op Terms',
@@ -96,12 +97,7 @@ export const FEATURED_PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Nadeem-Elsayed/Iron-Man',
     metrics: '< 35ms Inference Latency',
     badge: 'Flagship MLOps Project',
-    featured: true,
-    videoDemo: {
-      type: 'youtube',
-      url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder URL easily replaced by user
-      caption: 'Real-time gesture detection and Windows OS automated trigger demo'
-    }
+    featured: true
   },
   {
     id: 'hostel-scheduler',
@@ -116,7 +112,12 @@ export const FEATURED_PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Nadeem-Elsayed/Hotel-Scheduler',
     metrics: '1,000+ Guests Managed',
     badge: 'Production Client Software',
-    featured: true
+    featured: true,
+    videoDemo: {
+      type: 'youtube',
+      url: 'https://www.youtube.com/embed/imUtS33-Pxs',
+      caption: 'Offline desktop client operations, shift scheduling, and guest management walkthrough'
+    }
   },
   {
     id: 'lumina',

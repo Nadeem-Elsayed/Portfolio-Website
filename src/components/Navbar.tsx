@@ -27,10 +27,14 @@ export const Navbar: React.FC = () => {
         {/* Brand / Logo */}
         <a
           href="#about"
-          className="text-white font-bold text-sm tracking-tight hover:text-cyan-400 transition flex items-center gap-2"
+          className="text-white font-bold text-sm tracking-tight hover:text-cyan-400 transition flex items-center gap-2.5"
         >
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-          <span>NE</span>
+          <img
+            src={PERSONAL_INFO.profileImage}
+            alt="Nadeem Elsayed"
+            className="w-6 h-6 rounded-full object-cover border border-cyan-400/40"
+          />
+          <span className="font-mono font-semibold">NE</span>
         </a>
 
         <div className="hidden md:block h-4 w-[1px] bg-slate-800" />
