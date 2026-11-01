@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   university: 'McMaster University',
   degree: 'Bachelor of Engineering, Software Engineering',
   expectedGraduation: 'Expected May 2028',
-  location: 'Toronto / Hamilton, ON',
+  location: 'Mississauga / Hamilton / Toronto, ON, Canada',
   email: 'elsayn3@mcmaster.ca',
   github: 'https://github.com/nadeem-elsayed',
   linkedin: 'https://linkedin.com/in/nadeem-elsayed-b63828290',
