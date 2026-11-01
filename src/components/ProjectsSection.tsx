@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   ExternalLink,
-  Play,
   Cpu,
   Award,
   Radio,
@@ -9,12 +8,8 @@ import {
 } from 'lucide-react';
 import { GithubIcon } from './icons';
 import { FEATURED_PROJECTS, OTHER_PROJECTS } from '../data/portfolioData';
-import { VideoModal } from './VideoModal';
-import type { Project } from '../types';
 
 export const ProjectsSection: React.FC = () => {
-  const [selectedVideoProject, setSelectedVideoProject] = useState<Project | null>(null);
-
   const ironman = FEATURED_PROJECTS.find((p) => p.id === 'iron-man');
   const hostel = FEATURED_PROJECTS.find((p) => p.id === 'hostel-scheduler');
   const lumina = FEATURED_PROJECTS.find((p) => p.id === 'lumina');
@@ -61,16 +56,6 @@ export const ProjectsSection: React.FC = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-2.5 pt-1">
-                {ironman.videoDemo && (
-                  <button
-                    onClick={() => setSelectedVideoProject(ironman)}
-                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs hover:bg-cyan-400 transition shadow-md shadow-cyan-500/20"
-                  >
-                    <Play className="w-3.5 h-3.5 fill-current" />
-                    <span>Watch Demo</span>
-                  </button>
-                )}
-
                 {ironman.githubUrl && (
                   <a
                     href={ironman.githubUrl}
@@ -166,7 +151,21 @@ export const ProjectsSection: React.FC = () => {
                 {hostel.subtitle}
               </p>
 
-              <p className="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+              {/* Direct Inline Video Player */}
+              {hostel.videoDemo && (
+                <div className="my-4 relative aspect-video w-full rounded-xl overflow-hidden border border-slate-800/90 bg-slate-950 shadow-lg group-hover:border-cyan-500/30 transition">
+                  <iframe
+                    src={hostel.videoDemo.url}
+                    title={`${hostel.title} Demo`}
+                    loading="lazy"
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              )}
+
+              <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
                 {hostel.description}
               </p>
 
@@ -189,30 +188,18 @@ export const ProjectsSection: React.FC = () => {
                 ))}
               </div>
 
-              <div className="flex items-center gap-2">
-                {hostel.videoDemo && (
-                  <button
-                    onClick={() => setSelectedVideoProject(hostel)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-cyan-500 text-slate-950 font-bold text-xs hover:bg-cyan-400 transition shadow-sm"
-                  >
-                    <Play className="w-3 h-3 fill-current" />
-                    <span>Watch Demo</span>
-                  </button>
-                )}
-
-                {hostel.githubUrl && (
-                  <a
-                    href={hostel.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-cyan-400 transition"
-                  >
-                    <GithubIcon className="w-3.5 h-3.5" />
-                    <span>Code</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                )}
-              </div>
+              {hostel.githubUrl && (
+                <a
+                  href={hostel.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-cyan-400 transition"
+                >
+                  <GithubIcon className="w-3.5 h-3.5" />
+                  <span>Code</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
             </div>
           </div>
         )}
@@ -240,7 +227,21 @@ export const ProjectsSection: React.FC = () => {
                 {lumina.subtitle}
               </p>
 
-              <p className="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+              {/* Direct Inline Video Player */}
+              {lumina.videoDemo && (
+                <div className="my-4 relative aspect-video w-full rounded-xl overflow-hidden border border-slate-800/90 bg-slate-950 shadow-lg group-hover:border-cyan-500/30 transition">
+                  <iframe
+                    src={lumina.videoDemo.url}
+                    title={`${lumina.title} Demo`}
+                    loading="lazy"
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              )}
+
+              <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
                 {lumina.description}
               </p>
 
@@ -380,16 +381,6 @@ export const ProjectsSection: React.FC = () => {
           ))}
         </div>
       </div>
-
-      {/* Video Demonstration Modal */}
-      {selectedVideoProject && (
-        <VideoModal
-          isOpen={!!selectedVideoProject}
-          onClose={() => setSelectedVideoProject(null)}
-          video={selectedVideoProject.videoDemo || null}
-          title={selectedVideoProject.title}
-        />
-      )}
     </section>
   );
 };

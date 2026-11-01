@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   university: 'McMaster University',
   degree: 'Bachelor of Engineering, Software Engineering',
   expectedGraduation: 'Expected May 2028',
-  location: 'Mississauga / Hamilton / Toronto, ON, Canada',
+  location: 'Mississauga / Toronto /Hamilton, ON, Canada',
   email: 'elsayn3@mcmaster.ca',
   github: 'https://github.com/nadeem-elsayed',
   linkedin: 'https://linkedin.com/in/nadeem-elsayed-b63828290',
@@ -115,7 +115,7 @@ export const FEATURED_PROJECTS: Project[] = [
     featured: true,
     videoDemo: {
       type: 'youtube',
-      url: 'https://www.youtube.com/embed/imUtS33-Pxs',
+      url: 'https://www.youtube-nocookie.com/embed/imUtS33-Pxs',
       caption: 'Offline desktop client operations, shift scheduling, and guest management walkthrough'
     }
   },
@@ -132,7 +132,12 @@ export const FEATURED_PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Nadeem-Elsayed/Lumina',
     metrics: '1st Place / 150 Participants',
     badge: 'Hackathon 1st Place Winner',
-    featured: true
+    featured: true,
+    videoDemo: {
+      type: 'youtube',
+      url: 'https://www.youtube-nocookie.com/embed/tiYEwTZRhoU',
+      caption: 'Award-winning 2D platformer gameplay, custom collision detection, and physics engine demo'
+    }
   },
   {
     id: 'weather-network',
