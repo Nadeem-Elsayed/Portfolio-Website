@@ -97,7 +97,12 @@ export const FEATURED_PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Nadeem-Elsayed/Iron-Man',
     metrics: '< 35ms Inference Latency',
     badge: 'Flagship MLOps Project',
-    featured: true
+    featured: true,
+    videoDemo: {
+      type: 'youtube',
+      url: 'https://www.youtube-nocookie.com/embed/c-M8j9RBNkQ',
+      caption: 'Real-time gesture detection and Windows OS automated trigger demo'
+    }
   },
   {
     id: 'hostel-scheduler',

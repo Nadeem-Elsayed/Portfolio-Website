@@ -71,30 +71,26 @@ export const ProjectsSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-              {/* Architecture & Details */}
-              <div className="lg:col-span-7 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                <p>{ironman.description}</p>
-                <div className="space-y-1.5 text-xs text-slate-400">
-                  {ironman.architecturePoints?.map((point, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <span className="text-cyan-400 mt-0.5 font-mono">▸</span>
-                      <span>{point}</span>
-                    </div>
-                  ))}
+            {/* Visual Demo & System Architecture Row */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              {/* Direct Inline Video Player */}
+              {ironman.videoDemo && (
+                <div className="lg:col-span-7">
+                  <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-slate-800/90 bg-slate-950 shadow-lg group-hover:border-cyan-500/30 transition">
+                    <iframe
+                      src={ironman.videoDemo.url}
+                      title={`${ironman.title} Demo`}
+                      loading="lazy"
+                      className="w-full h-full border-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
                 </div>
-
-                <div className="flex flex-wrap gap-1.5 pt-3">
-                  {ironman.techStack.map((tech, idx) => (
-                    <span key={idx} className="tag-pill px-2.5 py-0.5 rounded-md text-[11px] font-mono">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              )}
 
               {/* System Architecture Console Box */}
-              <div className="lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-xl p-4 font-mono text-xs space-y-2.5">
+              <div className={`${ironman.videoDemo ? 'lg:col-span-5' : 'lg:col-span-12'} bg-slate-950/80 border border-slate-800 rounded-xl p-4 font-mono text-xs space-y-2.5`}>
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2 text-[11px] text-slate-400">
                   <span className="flex items-center gap-1.5 text-cyan-400 font-semibold">
                     <Cpu className="w-3.5 h-3.5" />
@@ -102,7 +98,7 @@ export const ProjectsSection: React.FC = () => {
                   </span>
                   <span className="text-emerald-400 font-mono">Operational</span>
                 </div>
-                <div className="space-y-1.5 text-[11px] text-slate-300">
+                <div className="space-y-2 text-[11px] text-slate-300">
                   <div className="flex justify-between">
                     <span className="text-slate-500">Dataset:</span>
                     <span className="text-slate-200">HaGRID (500k+ frames)</span>
@@ -124,6 +120,27 @@ export const ProjectsSection: React.FC = () => {
                     <span className="text-slate-200">Windows OS Automation</span>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Architecture Narrative & Tech Stack */}
+            <div className="mt-6 pt-5 border-t border-slate-800/80 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p>{ironman.description}</p>
+              <div className="space-y-1.5 text-xs text-slate-400">
+                {ironman.architecturePoints?.map((point, idx) => (
+                  <div key={idx} className="flex items-start gap-2">
+                    <span className="text-cyan-400 mt-0.5 font-mono">▸</span>
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {ironman.techStack.map((tech, idx) => (
+                  <span key={idx} className="tag-pill px-2.5 py-0.5 rounded-md text-[11px] font-mono">
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
