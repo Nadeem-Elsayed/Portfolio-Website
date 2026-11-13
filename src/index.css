@@ -20,19 +20,26 @@
   background: #334155;
 }
 
+/* Hide default cursor on desktop pointer devices so Rubber Ducky is the primary cursor */
+@media (hover: hover) and (pointer: fine) {
+  html, body, a, button, input, textarea, select, [role="button"], iframe {
+    cursor: none !important;
+  }
+}
+
 /* Dynamic Cursor Spotlight */
 .spotlight-overlay {
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 30;
+  z-index: 10;
   transition: background 0.1s ease-out;
 }
 
 /* Bento card base */
 .bento-card {
   position: relative;
-  background: rgba(11, 17, 30, 0.72);
+  background: rgba(11, 17, 30, 0.76);
   border: 1px solid rgba(56, 189, 248, 0.12);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -54,4 +61,118 @@
 .tag-pill:hover {
   background: rgba(14, 165, 233, 0.16);
   border-color: rgba(56, 189, 248, 0.35);
+}
+
+/* ============================================================ */
+/* UNDERWATER KELP & BUBBLES KEYFRAME ANIMATIONS                */
+/* ============================================================ */
+
+/* Rising bubbles (Pattern 1): Oscillates side-to-side and continues past the top without fading */
+@keyframes bubble-rise-wobble-1 {
+  0% {
+    transform: translateY(60px) translateX(0) scale(0.7);
+  }
+  15% {
+    transform: translateY(-16vh) translateX(16px) scale(0.76);
+  }
+  32% {
+    transform: translateY(-38vh) translateX(-18px) scale(0.83);
+  }
+  50% {
+    transform: translateY(-60vh) translateX(22px) scale(0.91);
+  }
+  68% {
+    transform: translateY(-82vh) translateX(-18px) scale(0.98);
+  }
+  85% {
+    transform: translateY(-102vh) translateX(16px) scale(1.04);
+  }
+  100% {
+    transform: translateY(-122vh) translateX(-10px) scale(1.1);
+  }
+}
+
+/* Rising bubbles (Pattern 2): Oscillates side-to-side and continues past the top without fading */
+@keyframes bubble-rise-wobble-2 {
+  0% {
+    transform: translateY(60px) translateX(0) scale(0.7);
+  }
+  15% {
+    transform: translateY(-16vh) translateX(-16px) scale(0.76);
+  }
+  32% {
+    transform: translateY(-38vh) translateX(18px) scale(0.83);
+  }
+  50% {
+    transform: translateY(-60vh) translateX(-22px) scale(0.91);
+  }
+  68% {
+    transform: translateY(-82vh) translateX(18px) scale(0.98);
+  }
+  85% {
+    transform: translateY(-102vh) translateX(-16px) scale(1.04);
+  }
+  100% {
+    transform: translateY(-122vh) translateX(10px) scale(1.1);
+  }
+}
+
+.bubble-wobble-1 {
+  animation: bubble-rise-wobble-1 infinite ease-in-out;
+}
+
+.bubble-wobble-2 {
+  animation: bubble-rise-wobble-2 infinite ease-in-out;
+}
+
+/* Kelp Sway Animation 1 - anchored firmly to bottom center */
+@keyframes kelp-sway-1 {
+  0%, 100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  30% {
+    transform: rotate(2.5deg) skewX(1.5deg);
+  }
+  70% {
+    transform: rotate(-2.5deg) skewX(-1.2deg);
+  }
+}
+
+/* Kelp Sway Animation 2 - anchored firmly to bottom center */
+@keyframes kelp-sway-2 {
+  0%, 100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  35% {
+    transform: rotate(-3deg) skewX(-1.8deg);
+  }
+  75% {
+    transform: rotate(2.2deg) skewX(1.4deg);
+  }
+}
+
+.kelp-sway-left {
+  animation: kelp-sway-1 7.2s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+.kelp-sway-right {
+  animation: kelp-sway-2 6.4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+/* One-shot click ripple pulse (never repeats/loops) */
+@keyframes ripple-pop {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  animation: ripple-pop 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }

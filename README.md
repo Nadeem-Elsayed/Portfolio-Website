@@ -5,8 +5,11 @@ A modern, high-performance Software Engineering portfolio website built with **V
 ## Design Highlights
 - **Curated Bento Grid Hierarchy:** Structured into 5 sequential zones (About & Academic Honors, Production Experience, Flagship Projects, Technical Arsenal, and Direct Connect) to optimize recruiter scannability.
 - **Brittany Chiang Cursor Spotlight:** Subtle, reactive electric blue/cyan radial spotlight that tracks cursor movement across the viewport.
+- **Rubber Ducky Debugging Cursor:** Custom interactive duck cursor that smoothly tracks movement, tilts with velocity, and expands on mouse-click hold.
+- **Underwater Kelp Parallax:** 6 distinct anchored kelp stalks separated across fainter background and vibrant foreground layers, providing natural oceanic depth.
+- **Floating Ambient Bubbles:** Hardware-accelerated rising bubbles continuously ascending in the background.
 - **Clean Vector Iconography:** Official SVG/Lucide icons for all external links (LinkedIn, GitHub, Resume, Email, External Link indicators). Zero emojis throughout the codebase.
-- **Interactive Project Video Demos:** Integrated modal supporting both YouTube embeds and local HTML5 video playback.
+- **Direct Inline Video Previews:** Zero-click 16:9 embedded demos for Flagship and award-winning projects (IronMan, Hotel-Scheduler, Lumina).
 - **Zero-Friction Recruitment Accolades:** Highlighting co-op availability (starting Winter for 4 to 16 months), Dean's Honour List, Golden Key Society, Valedictorian, and detailed technical judging at the McMaster Engineering Competition.
 
 ---
@@ -40,6 +43,15 @@ npm run build
 
 ---
 
+## Asset Attributions
+The custom graphical assets used in the aquatic theme are licensed and attributed as follows:
+
+- **Rubber Duck:** [Shutterstock Vector](https://www.shutterstock.com/image-vector/shiny-yellow-rubber-duck-front-side-2565116361)
+- **Seaweed & Aquatic Plants (Kelp Collection):** [Vecteezy Vector Art](https://www.vecteezy.com/vector-art/82089589-set-of-icon-logo-seaweed-and-aquatic-plant-silhouette-collection-for-marine-nature-and-ocean-ecosystem-branding-illustration)
+- **Bubble Graphics:** [MyCuteGraphics](https://www.mycutegraphics.com/graphics/bubble-images.html)
+
+---
+
 ## Customization Guide
 
 ### 1. Resume PDF
@@ -54,11 +66,10 @@ In `src/data/portfolioData.ts`, each project can specify a `videoDemo` object:
 ```typescript
 videoDemo: {
   type: 'youtube', // or 'local'
-  url: 'https://www.youtube.com/embed/YOUR_VIDEO_ID', // or '/videos/ironman-demo.mp4'
-  caption: 'Real-time gesture detection and Windows OS automated trigger demo'
+  url: 'https://www.youtube-nocookie.com/embed/YOUR_VIDEO_ID',
+  caption: 'Project walkthrough demonstration'
 }
 ```
-- **Why YouTube is recommended:** Hosting unlisted/public demos on YouTube provides adaptive bitrate streaming on mobile and desktop without bloating your Git repository or incurring CDN bandwidth costs.
 
 ### 3. Deploying to Vercel
 1. Push your repository to GitHub.
