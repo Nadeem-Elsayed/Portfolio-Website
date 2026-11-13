@@ -67,62 +67,37 @@
 /* UNDERWATER KELP & BUBBLES KEYFRAME ANIMATIONS                */
 /* ============================================================ */
 
-/* Rising bubbles (Pattern 1): Oscillates side-to-side and continues past the top without fading */
-@keyframes bubble-rise-wobble-1 {
+/* Vertical ascent: Accelerates at bottom, then ascends at a continuous, steady pace */
+@keyframes bubble-rise-vertical {
   0% {
-    transform: translateY(60px) translateX(0) scale(0.7);
+    transform: translateY(60px) scale(0.7);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0); /* accelerates out from kelp */
   }
-  15% {
-    transform: translateY(-16vh) translateX(16px) scale(0.76);
-  }
-  32% {
-    transform: translateY(-38vh) translateX(-18px) scale(0.83);
-  }
-  50% {
-    transform: translateY(-60vh) translateX(22px) scale(0.91);
-  }
-  68% {
-    transform: translateY(-82vh) translateX(-18px) scale(0.98);
-  }
-  85% {
-    transform: translateY(-102vh) translateX(16px) scale(1.04);
+  10% {
+    transform: translateY(-8vh) scale(0.78);
+    animation-timing-function: linear; /* continuous steady pace all the way past the top */
   }
   100% {
-    transform: translateY(-122vh) translateX(-10px) scale(1.1);
+    transform: translateY(-125vh) scale(1.1);
   }
 }
 
-/* Rising bubbles (Pattern 2): Oscillates side-to-side and continues past the top without fading */
-@keyframes bubble-rise-wobble-2 {
+.bubble-vertical {
+  animation: bubble-rise-vertical infinite;
+}
+
+/* Horizontal sway: Smooth sinusoidal oscillation (sine wave) independent of vertical rise */
+@keyframes bubble-sway-motion {
   0% {
-    transform: translateY(60px) translateX(0) scale(0.7);
-  }
-  15% {
-    transform: translateY(-16vh) translateX(-16px) scale(0.76);
-  }
-  32% {
-    transform: translateY(-38vh) translateX(18px) scale(0.83);
-  }
-  50% {
-    transform: translateY(-60vh) translateX(-22px) scale(0.91);
-  }
-  68% {
-    transform: translateY(-82vh) translateX(18px) scale(0.98);
-  }
-  85% {
-    transform: translateY(-102vh) translateX(-16px) scale(1.04);
+    transform: translateX(var(--sway-min, -16px));
   }
   100% {
-    transform: translateY(-122vh) translateX(10px) scale(1.1);
+    transform: translateX(var(--sway-max, 16px));
   }
 }
 
-.bubble-wobble-1 {
-  animation: bubble-rise-wobble-1 infinite ease-in-out;
-}
-
-.bubble-wobble-2 {
-  animation: bubble-rise-wobble-2 infinite ease-in-out;
+.bubble-sway {
+  animation: bubble-sway-motion ease-in-out infinite alternate;
 }
 
 /* Kelp Sway Animation 1 - anchored firmly to bottom center */
